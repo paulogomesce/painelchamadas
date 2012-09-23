@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/templates/principal.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" 
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+
+  <ui:param name="nm_cabecalho" value="Cadastrar novo usuario do sistema" />
+  
+  <ui:define name="corpo-pagina">
+	<h:form id="form-geral">
+      <h:panelGrid columns="2">
+        <h:outputLabel value="Codigo: " for="cd-usuario" />
+        <p:inputText id="cd-usuario" value="#{usuarioSistemaBean.usuario.id}" disabled="true" />
+
+    	<h:outputLabel value="Login: " for="login" />
+        <p:inputText id="login" value="#{usuarioSistemaBean.usuario.login}" />
+        
+        <h:outputLabel value="Senha: " for="senha" />
+        <p:password id="senha" value="#{usuarioSistemaBean.usuario.senha}"/>
+        
+        <h:outputLabel value="Repita a Senha: " for="confirmaSenha" />
+        <p:password id="confirmaSenha" value="#{usuarioSistemaBean.confirmaSenha}"/>        
+        
+        <p:commandButton action="#{usuarioSistemaBean.salvar}" value="Salvar" update="form-geral"/>
+        
+      </h:panelGrid>
+    </h:form>
+  </ui:define>
+</ui:composition>

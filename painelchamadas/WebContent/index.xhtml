@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Adicionar Nova Pessoa em Espera</title>
+        <link rel="stylesheet" type="text/css" href="css/template_principal.css" />
+        <style type="text/css">
+          #panel-login{min-width: 320px;
+                       min-height: 150; 
+                       position: absolute;
+                       left: 50%;
+                       top: 50%;
+                       margin-left: -160;
+                       margin-top: -100;                                              
+          }
+        </style>
+	</h:head>
+<f:view>
+  <p:panel header="Login" id="panel-login">
+	<h:form id="form-geral" >
+      <h:panelGrid columns="3">
+
+        <h:outputLabel value="Login: " for="login" />
+        <p:inputText id="login" value="#{loginBean.login}" required="true" requiredMessage="Campo obrigatório" /><p:message for="login"/>
+
+    	<h:outputLabel value="Senha: " for="senha" />
+        <p:password id="senha" value="#{loginBean.senha}" required="true" requiredMessage="Campo obrigatório" /><p:message for="senha"/>
+        
+        <p:commandButton action="#{loginBean.processaLogin}" value="Logar" update="form-geral" ajax="true"/>
+        
+        
+      </h:panelGrid>
+      <p:messages globalOnly="true" />
+    </h:form>
+  </p:panel>
+</f:view>
+</html>

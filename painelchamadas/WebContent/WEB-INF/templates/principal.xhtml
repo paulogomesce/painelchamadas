@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>Painel de Chamadas</title>
+  <link rel="stylesheet" type="text/css" href="css/template_principal.css" />
+</h:head>
+<h:body>
+  <p:panel id="div-conteiner-geral">
+  
+  <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all" id="div-conteiner-geral_header">
+    <span class="ui-panel-title">Sistema de Gestão de Órdem de Atendimento</span>
+  </div>
+    
+    <p:panel header="Menu" id="menu-lateral">
+      <ui:insert name="menu">
+        <ui:include src="/menu.xhtml" />
+      </ui:insert>
+    </p:panel>
+  
+    <p:panel header="#{nm_cabecalho}" id="corpo-pagina">
+      <ui:insert name="corpo-pagina">Este e o corpo da pagina</ui:insert>
+    </p:panel>    
+    <p:draggable for="corpo-pagina" />
+    <p:resizable for="corpo-pagina" handles="e,w,n,se,sw,ne,nw"/>
+    
+    <div id="limpa"></div>
+    
+  </p:panel>
+</h:body>
+</html>

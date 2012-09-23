@@ -1,0 +1,60 @@
+.ui-widget{
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.8em;
+}
+
+
+#div-conteiner-geral #div-conteiner-geral_content{
+	padding: 3px 0 0 0;
+}
+
+#div-conteiner-geral_header{
+	height: 40px;
+	padding: 15px 0 0 10px;
+	font-size: 1.5em;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Verdana,Arial,sans-serif;
+}
+#div-conteiner-geral{
+	margin: 5px;
+	width: 98%;
+}
+
+#limpa{
+	clear: both;
+}
+
+#template-header{
+	border: 1px solid gray;
+	height: 60px;
+	background-color: green;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+
+#menu-lateral{
+	min-height: 400px;
+	width: 220px;
+	margin: 0;
+	float: left;
+	margin: 2px;
+}
+
+#corpo-pagina{
+	margin: 0;
+ 	float: left;
+ 	margin: 2px;
+ 	width: 80%;
+ 	min-height: 400px;
+}
+
+#template-footer{
+	background-color: silver;
+	margin: 0;
+	padding: 0;
+}

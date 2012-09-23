@@ -1,0 +1,24 @@
+<ui:fragment
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" 
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+  
+  <h:form>  
+      <p:growl id="messages"/>  
+      <p:menu style="width: 95%; marging: 0;">  
+          <p:submenu label="Manter Fila">  
+              <p:menuitem value="Adicionar"  url="addCliFila.xhtml" update="messages" icon="ui-icon-disk" />  
+              <p:menuitem value="Consultar"  update="messages" icon="ui-icon-arrowrefresh-1-w"/>  
+          </p:submenu>  
+          <p:submenu label="Consultas">  
+              <p:menuitem value="Visualir Lista"  update="messages" ajax="false" icon="ui-icon-close"/>  
+          </p:submenu>  
+          <p:submenu label="Usuario Sistema">  
+              <p:menuitem value="Novo Usuario" url="newUsuSist.xhtml" icon="ui-icon-home"/>  
+              <p:menuitem value="Cancelar Item" outcome="/mobile/index" icon="ui-icon-star"/>  
+          </p:submenu>  
+      </p:menu>     
+  </h:form>  
+</ui:fragment>

@@ -1,0 +1,45 @@
+<ui:composition template="/WEB-INF/templates/principal.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core" 
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+
+  <ui:param name="nm_cabecalho" value="Inclusao de um novo usuario na fila" />
+  
+  <ui:define name="corpo-pagina">
+	<h:form id="form-geral">
+      <h:panelGrid columns="2">
+        <h:outputLabel value="Código: " for="cd-agendamento" />
+        <p:inputText id="cd-agendamento" value="#{listaEsperaBean.listaEspera.cdAgendamento}" disabled="true" />
+
+    	<h:outputLabel value="Nome: " for="nome" />
+        <h:panelGroup>
+          <p:inputText id="nome" value="#{listaEsperaBean.listaEspera.nmCliente}" required="true"
+                       requiredMessage="Campo Obrigatório"
+                       validatorMessage="O campo deve conter somente texto">            
+          </p:inputText>
+          <p:message for="nome" />
+        </h:panelGroup>
+        
+        <h:outputLabel value="Senha: " for="senha" />
+        <p:inputText id="senha" value="#{listaEsperaBean.listaEspera.cdSenha}" disabled="true"/>
+        
+        <h:outputLabel value="Data Inclusao: " for="dt-inclusao" />
+        <p:inputText id="dt-inclusao" value="#{listaEsperaBean.listaEspera.dataHoraInclusao}" disabled="true" converter="dataHoraConverter"/>
+        
+        
+        <h:outputLabel value="Atualizacao: " for="dt-atualizacao" />
+        <p:inputText id="dt-atualizacao" value="#{listaEsperaBean.listaEspera.dtMudancaStatus}" disabled="true"/>        
+
+        <h:outputLabel value="Usuario: " for="usuario-atualizacao" />
+        <p:inputText id="usuario-atualizacao" value="#{listaEsperaBean.listaEspera.nmUsuarioStatus}" disabled="true"/>        
+        
+        <p:commandButton action="#{listaEsperaBean.save}" value="Salvar" update="form-geral" disabled="#{listaEsperaBean.botaoSalvar}" />
+        <p:commandButton action="#{listaEsperaBean.addNovo}" value="Novo" update="form-geral" disabled="#{listaEsperaBean.botaoNovo}"/>
+        
+      </h:panelGrid>
+    </h:form>
+    <h:messages />
+  </ui:define>
+</ui:composition>
