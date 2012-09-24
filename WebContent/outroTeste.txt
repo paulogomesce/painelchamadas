@@ -5,3 +5,5 @@ Demostração para Adejanny
 Outra demonstração para Adejanny
 
 Teste de configuração de projeto git simples
+
+a configuração é simples, eu quem acabei complicando
