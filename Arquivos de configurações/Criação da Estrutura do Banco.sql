@@ -1,8 +1,9 @@
---Resetar todo o schema
+﻿--Resetar todo o schema
 /*
 DROP sequence painel.seq_id_usuario_sistema;
 DROP TABLE painel.tb_lista_espera;
 DROP sequence painel.seq_cd_agendamento;
+DROP sequence painel.seq_cd_senha;
 DROP TABLE painel.tb_usuario;
 DROP function painel.drop_sequence_cd_senha();
 DROP function painel.create_sequence_cd_senha();
@@ -21,6 +22,9 @@ CREATE DATABASE painel
 
 create schema painel;
 create sequence painel.seq_cd_agendamento;
+create sequence painel.seq_cd_senha
+  MINVALUE 1
+  MAXVALUE 99999;
 create table painel.tb_lista_espera(
   cd_agendamento     integer default nextval('painel.seq_cd_agendamento'),
   nm_cliente         varchar(100) null,

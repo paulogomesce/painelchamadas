@@ -5,10 +5,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class ConexaoFactory {
+	
+	private EntityManager manager;
 
-	public static EntityManager getConexao(){
+	public EntityManager getConexao(){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("PAINAL_CHAMADAS");
-		EntityManager em = factory.createEntityManager();
-		return em;
+		this.manager = factory.createEntityManager();
+		return this.manager;
+	}
+	
+	public void fechaConexao(){
+		this.manager.close();
 	}
 }

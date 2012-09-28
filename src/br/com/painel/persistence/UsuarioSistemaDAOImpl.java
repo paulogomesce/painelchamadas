@@ -10,7 +10,7 @@ public class UsuarioSistemaDAOImpl implements UsuarioSistemaDAO{
 	
 	public boolean save(UsuarioSistema usuarioSistema){
 		boolean resultado = false;
-		EntityManager em = ConexaoFactory.getConexao();
+		EntityManager em = new ConexaoFactory().getConexao();
 		em.getTransaction().begin();
 		em.persist(usuarioSistema);
 		em.getTransaction().commit();
@@ -32,7 +32,7 @@ public class UsuarioSistemaDAOImpl implements UsuarioSistemaDAO{
 	}	
 
 	public UsuarioSistema validaLogin(String login, String senha){
-		EntityManager em = ConexaoFactory.getConexao();
+		EntityManager em = new ConexaoFactory().getConexao();
 		em.getTransaction().begin();
 		Query query = em.createQuery("select u from UsuarioSistema u where u.login = :login and u.senha = :senha");
 		query.setParameter("login", login);

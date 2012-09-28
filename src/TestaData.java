@@ -11,6 +11,10 @@ public class TestaData {
 		
 		System.out.println(DateUtil.criarDataHora("14/08/196 11:10:55"));
 		
+		System.out.println(DateUtil.formatarDataPtBR(new Date()));
+		
+		System.out.println(DateUtil.formatarDatahoraPtBR(new Date()));
+		
 		System.out.println(new Date());
 	}
 }

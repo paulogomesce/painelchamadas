@@ -58,22 +58,23 @@ public class ManterListaEsperaDAOImpl implements ManterListaEsperaDAO{
 	}
 	
 	public List<ListaEspera> chamaProximoDaFila(){
-		EntityManager manager = ConexaoFactory.getConexao();
-		Query query = manager.createQuery("select le from ListaEspera le where le.cdStutus = 0 order by le.cdSenha", ListaEspera.class).setMaxResults(1);
-		//query.setFirstResult(1);
-		//query.setMaxResults(1);
-		return query.getResultList(); 
+		ConexaoFactory manager = new ConexaoFactory();
+		List<ListaEspera> proximoDaFila;
+		Query query = manager.getConexao().createQuery("select le from ListaEspera le where le.cdStutus = 0 order by le.cdSenha", ListaEspera.class).setMaxResults(1);
+		proximoDaFila = query.getResultList();;
+		manager.fechaConexao();
+		return proximoDaFila;  
 	}
 	
 	public BigDecimal obterSenha(){
-		EntityManager manager = ConexaoFactory.getConexao();
+		EntityManager manager = new ConexaoFactory().getConexao();
 		BigDecimal cdSenha = null;
 		try{
 			Query query = manager.createNativeQuery("select to_number(nextval('painel.seq_cd_senha')||'', '9999999999')");
 			cdSenha = (BigDecimal) query.getSingleResult();
 			manager.close();			
 		}catch (Exception e) {
-			//FacesMessageUtil.addErro("Erro na geração da senha.");
+			//FacesMessageUtil.addErro("Erro na geraï¿½ï¿½o da senha.");
 			System.out.println(e.toString());
 		}
 		return cdSenha;

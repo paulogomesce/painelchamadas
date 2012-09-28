@@ -11,7 +11,7 @@ public class TesteLogin {
 
 	public static void main(String[] args) {
 
-		EntityManager em = ConexaoFactory.getConexao();
+		EntityManager em = new ConexaoFactory().getConexao();
 		//em.getTransaction().begin();
 		//Query query = em.createQuery("select u from UsuarioSistema u where u.login = :login and u.senha = :senha");
 		//query.setParameter("login", "paulo");
