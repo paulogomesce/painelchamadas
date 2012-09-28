@@ -1,15 +1,28 @@
-﻿/*
-Resetar todo o banco de dados
-DROP sequence painel.seq_cd_agendamento;
-DROP TABLE painel.tb_lista_espera;
+--Resetar todo o schema
+/*
 DROP sequence painel.seq_id_usuario_sistema;
+DROP TABLE painel.tb_lista_espera;
+DROP sequence painel.seq_cd_agendamento;
 DROP TABLE painel.tb_usuario;
+DROP function painel.drop_sequence_cd_senha();
+DROP function painel.create_sequence_cd_senha();
+DROP function painel.reset_sequence_cd_senha();
+DROP schema painel;
+*/
+/*
+
+CREATE DATABASE painel
+  WITH ENCODING='UTF8'
+       OWNER=postgres
+       LC_COLLATE='Portuguese, Brazil'
+       LC_CTYPE='Portuguese, Brazil'
+       CONNECTION LIMIT=-1;
 */
 
 create schema painel;
 create sequence painel.seq_cd_agendamento;
 create table painel.tb_lista_espera(
-  cd_agendamento     integer default nextval('seq_cd_agendamento'),
+  cd_agendamento     integer default nextval('painel.seq_cd_agendamento'),
   nm_cliente         varchar(100) null,
   cd_senha           integer not null,
   data_hora_inclusao timestamp default LOCALTIMESTAMP(0),
@@ -49,22 +62,5 @@ begin
 end;
 $$ language plpgsql;
 
-----------------------------------------------------------------------------------
--- Testes
-----------------------------------------------------------------------------------
-select painel.drop_sequence_cd_senha();
-select painel.create_sequence_cd_senha();
-select painel.reset_sequence_cd_senha();
-
-select nextval('painel.seq_cd_senha');
-
-select md5('casa')
-
-insert into painel.tb_usuario values(nextval('painel.seq_id_usuario_sistema'), 'adejanny', md5('87297857'));
-
-insert into tb_lista_espera(nm_cliente, cd_senha, data_hora_inclusao, cd_stutus, dt_mudanca_status, nm_usuario_status)
-values('PAULO', 1, LOCALTIMESTAMP(0), 0, NULL, 'FPAULOG');
-
-select * from painel.tb_usuario
-SELECT * FROM painel.tb_lista_espera;
-SELECT LOCALTIMESTAMP(0)
+--Cria o login do usuario administrador do sistema
+insert into painel.tb_usuario values(nextval('painel.seq_id_usuario_sistema'), 'administrador', md5('administrador'));

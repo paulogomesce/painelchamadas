@@ -14,8 +14,8 @@
 		
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />  
             <property name="hibernate.connection.username" value="postgres" />  
-            <property name="hibernate.connection.password" value="cel91545117" />  
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/painelchamadas/painel" />  
+            <property name="hibernate.connection.password" value="postgres" />  
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/painel" />  
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />  
             <property name="hibernate.show_sql" value="true" />
 
