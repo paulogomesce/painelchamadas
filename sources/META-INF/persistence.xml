@@ -16,16 +16,21 @@
             <property name="hibernate.connection.username" value="painel" />  
             <property name="hibernate.connection.password" value="painel" />  
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/painel" />  
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />  
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.show_sql" value="true" />
             
-			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
-			<property name="hibernate.c3p0.min_size" value="50" />
-			<property name="hibernate.c3p0.max_size" value="100" />
-			<property name="hibernate.c3p0.timeout" value="5" />
-			<property name="hibernate.c3p0.max_statements" value="50" />
-			<property name="hibernate.c3p0.idle_test_period" value="0" />
-
+ 			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" /> 
+ 			<property name="hibernate.c3p0.minPoolSize" value="0" />
+ 			<property name="hibernate.c3p0.maxPoolSize" value="0" />
+  			<property name="hibernate.c3p0.initialPoolSize" value="1" />
+ 			<property name="hibernate.c3p0.maxIdleTime" value="1" />
+ 			<property name="hibernate.c3p0.acquireIncrement" value="10" /> <!-- Determina quantas conexões c3p0 tentara criar quando o pool estiver cheio --> 
+ 			<property name="hibernate.c3p0.maxConnectionAge" value="1" />
+ 			<property name="hibernate.c3p0.maxIdleTime" value="1" />
+ 			<property name="hibernate.c3p0.maxIdleTimeExcessConnections" value="1" />
+ 			<property name="hibernate.c3p0.maxStatements" value="1" />
+ 			<property name="hibernate.c3p0.maxStatementsPerConnection" value="1" />
+ 			
 		</properties>
 	</persistence-unit>
 </persistence>

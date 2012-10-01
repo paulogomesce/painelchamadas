@@ -61,7 +61,7 @@ public class ManterListaEsperaDAOImpl implements ManterListaEsperaDAO{
 		ConexaoFactory manager = new ConexaoFactory();
 		List<ListaEspera> proximoDaFila;
 		Query query = manager.getConexao().createQuery("select le from ListaEspera le where le.cdStutus = 0 order by le.cdSenha", ListaEspera.class).setMaxResults(1);
-		proximoDaFila = query.getResultList();;
+		proximoDaFila = query.getResultList();
 		manager.fechaConexao();
 		return proximoDaFila;  
 	}
