@@ -17,3 +17,5 @@ values('PAULO', 1, LOCALTIMESTAMP(0), 0, NULL, 'FPAULOG');
 select * from painel.tb_usuario
 SELECT * FROM painel.tb_lista_espera;
 SELECT LOCALTIMESTAMP(0)
+
+select setval('painel.seq_cd_senha', 1, false);

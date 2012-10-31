@@ -68,3 +68,7 @@ $$ language plpgsql;
 
 --Cria o login do usuario administrador do sistema
 insert into painel.tb_usuario values(nextval('painel.seq_id_usuario_sistema'), 'administrador', md5('administrador'));
+
+CREATE ROLE painel LOGIN ENCRYPTED PASSWORD 'md580536d4226e2e45a1cd5d337d622d5a9'
+  SUPERUSER CREATEDB CREATEROLE REPLICATION
+   VALID UNTIL 'infinity';
