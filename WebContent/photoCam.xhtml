@@ -11,21 +11,20 @@
 	</h:head>
 <f:view>
 <h:form>  
-  
-	Teste de commit via site
-
     <h:panelGrid columns="3">  
-        <p:photoCam widgetVar="pc" listener="#{photoCamBean.oncapture}" update="photos"/>  
+        <p:photoCam widgetVar="pc" listener="#{photoCamBean.onCapture}" update="photos"/>  
   
-        <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>  
+        <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>        
   
-        <p:imageSwitch effect="zoom" id="photos">  
+        <p:imageSwitch effect="zoom" id="photos">
             <ui:repeat value="#{photoCamBean.photos}" var="photo">  
-                <p:graphicImage value="/photocam/#{photo}.png" />  
+                <p:graphicImage value="#{photo}.jpg" />
+                <h:graphicImage value="#{photo}.jpg"/>
+                <img src="#{photo}.png" />
             </ui:repeat>  
         </p:imageSwitch>  
     </h:panelGrid>  
   
-</h:form> 
+</h:form>
 </f:view>
 </html>

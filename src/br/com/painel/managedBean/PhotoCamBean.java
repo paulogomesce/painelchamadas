@@ -3,37 +3,58 @@ package br.com.painel.managedBean;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.FacesException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
+
 import org.primefaces.event.CaptureEvent;
 
+@ManagedBean
+@SessionScoped
 public class PhotoCamBean {
    
-    private List<String> photos = new ArrayList<String>();
-    
-    private String getRandomImageName() {
-		int i = (int) (Math.random() * 10000000);
-		
+    private List<FileImageOutputStream> photos = new ArrayList<FileImageOutputStream>();    
+    private FileImageOutputStream imageOutput;    
+    private String gerarNomeDaImagem() {
+		int i = (int) (Math.random() * 10000000);		
 		return String.valueOf(i);
 	}
 
-    public List<String> getPhotos() {
+    public List<FileImageOutputStream> getPhotos() {
         return photos;
     }    
     
-    public void oncapture(CaptureEvent captureEvent) {
-        String photo = getRandomImageName();
-        this.photos.add(0,photo);
+    
+    public FileImageOutputStream getImageOutput() {
+		return imageOutput;
+	}
+
+	public void setImageOutput(FileImageOutputStream imageOutput) {
+		this.imageOutput = imageOutput;
+	}
+
+	public void setPhotos(List<FileImageOutputStream> photos) {
+		this.photos = photos;
+	}
+
+	public void onCapture(CaptureEvent captureEvent) {
+        String photo = gerarNomeDaImagem();
+
         byte[] data = captureEvent.getData();
         
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
+		//String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
+		
+		String newFileName = "d:\\" + photo + ".jpg";
 		
 		System.out.println("Nome do arquivo: "+newFileName);
 		
-		FileImageOutputStream imageOutput;
+        this.photos.add(imageOutput);
+		
 		try {
 			imageOutput = new FileImageOutputStream(new File(newFileName));
 			imageOutput.write(data, 0, data.length);
