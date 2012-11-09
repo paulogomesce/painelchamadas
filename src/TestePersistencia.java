@@ -1,5 +1,3 @@
-import java.math.BigDecimal;
-
 import br.com.painel.domain.ListaEspera;
 import br.com.painel.facade.ManterListaEsperaFacade;
 import br.com.painel.facade.ManterListaEsperaFacadeImpl;
@@ -9,6 +7,7 @@ public class TestePersistencia {
 		
 		
 		ListaEspera t = new ListaEspera();
+		@SuppressWarnings("unused")
 		int senha = 1;
 		t.setNmCliente("Adejanny Feitosa");
 		t.setCdSenha(null);

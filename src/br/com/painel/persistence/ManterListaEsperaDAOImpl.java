@@ -4,16 +4,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import javassist.bytecode.stackmap.TypeData;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import br.com.painel.domain.ListaEspera;
-import br.com.painel.util.FacesMessageUtil;
 
 public class ManterListaEsperaDAOImpl implements ManterListaEsperaDAO{
 
@@ -57,6 +53,7 @@ public class ManterListaEsperaDAOImpl implements ManterListaEsperaDAO{
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<ListaEspera> chamaProximoDaFila(){
 		ConexaoFactory manager = new ConexaoFactory();
 		List<ListaEspera> proximoDaFila;

@@ -23,6 +23,7 @@ public class TesteGeraSenha {
 		System.out.println(listaEspera.obterSenha());
 		
 		Query query = em.createQuery("select u from UsuarioSistema u", UsuarioSistema.class);
+		@SuppressWarnings("unchecked")
 		List<UsuarioSistema> usuarios = query.getResultList();
 		
 		for (UsuarioSistema u : usuarios) {

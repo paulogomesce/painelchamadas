@@ -1,16 +1,13 @@
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import br.com.painel.domain.UsuarioSistema;
+
 import br.com.painel.persistence.ConexaoFactory;
-import br.com.painel.persistence.ManterListaEsperaDAO;
-import br.com.painel.persistence.ManterListaEsperaDAOImpl;
-import br.com.painel.util.Criptografia;
 
 
 public class TesteLogin {
 
 	public static void main(String[] args) {
 
+		@SuppressWarnings("unused")
 		EntityManager em = new ConexaoFactory().getConexao();
 		//em.getTransaction().begin();
 		//Query query = em.createQuery("select u from UsuarioSistema u where u.login = :login and u.senha = :senha");

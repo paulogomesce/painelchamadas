@@ -46,6 +46,7 @@ public class PhotoCamBean {
 
         byte[] data = captureEvent.getData();
         
+		@SuppressWarnings("unused")
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		//String newFileName = servletContext.getRealPath("") + File.separator + "photocam" + File.separator + photo + ".png";
 		
