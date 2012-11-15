@@ -12,17 +12,13 @@
 <f:view>
 <h:form>  
     <h:panelGrid columns="3">  
-        <p:photoCam widgetVar="pc" listener="#{photoCamBean.onCapture}" update="photos"/>  
+        <p:photoCam widgetVar="pc" listener="#{photoCamBean.onCapture}" update="foto"/>  
   
         <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>        
   
-        <p:imageSwitch effect="zoom" id="photos">
-            <ui:repeat value="#{photoCamBean.photos}" var="photo">  
-                <p:graphicImage value="#{photo}.jpg" />
-                <h:graphicImage value="#{photo}.jpg"/>
-                <img src="#{photo}.png" />
-            </ui:repeat>  
-        </p:imageSwitch>  
+        <p:graphicImage value="#{photoCamBean.foto}" id="foto"/>
+        
+        
     </h:panelGrid>  
   
 </h:form>

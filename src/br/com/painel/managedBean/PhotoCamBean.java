@@ -1,5 +1,6 @@
 package br.com.painel.managedBean;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,33 +13,21 @@ import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletContext;
 
 import org.primefaces.event.CaptureEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 @ManagedBean
 @SessionScoped
 public class PhotoCamBean {
    
-    private List<FileImageOutputStream> photos = new ArrayList<FileImageOutputStream>();    
-    private FileImageOutputStream imageOutput;    
+    private List<StreamedContent> photos = new ArrayList<StreamedContent>();    
+    private FileImageOutputStream imageOutput;
+    private StreamedContent foto;
+    
+    
     private String gerarNomeDaImagem() {
 		int i = (int) (Math.random() * 10000000);		
 		return String.valueOf(i);
-	}
-
-    public List<FileImageOutputStream> getPhotos() {
-        return photos;
-    }    
-    
-    
-    public FileImageOutputStream getImageOutput() {
-		return imageOutput;
-	}
-
-	public void setImageOutput(FileImageOutputStream imageOutput) {
-		this.imageOutput = imageOutput;
-	}
-
-	public void setPhotos(List<FileImageOutputStream> photos) {
-		this.photos = photos;
 	}
 
 	public void onCapture(CaptureEvent captureEvent) {
@@ -54,16 +43,48 @@ public class PhotoCamBean {
 		
 		System.out.println("Nome do arquivo: "+newFileName);
 		
-        this.photos.add(imageOutput);
-		
 		try {
 			imageOutput = new FileImageOutputStream(new File(newFileName));
 			imageOutput.write(data, 0, data.length);
 			imageOutput.close();
+			
+			ByteArrayInputStream inputStream = new ByteArrayInputStream(data); 
+			
+			foto = new DefaultStreamedContent(inputStream, "image/png");
+			
+			this.photos.add(foto);
+			
 		}
         catch(Exception e) {
 			throw new FacesException("Error in writing captured image.");
 		}
     }
+
+	public List<StreamedContent> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<StreamedContent> photos) {
+		this.photos = photos;
+	}
+
+	public FileImageOutputStream getImageOutput() {
+		return imageOutput;
+	}
+
+	public void setImageOutput(FileImageOutputStream imageOutput) {
+		this.imageOutput = imageOutput;
+	}
+
+	public StreamedContent getFoto() {
+		return foto;
+	}
+
+	public void setFoto(StreamedContent foto) {
+		this.foto = foto;
+	}
+	
+	
+	
 }
                         
